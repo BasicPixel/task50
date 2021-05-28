@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  transition: ease 0.2s;
+  font-family: "Titillium Web", sans-serif;
+}
+
+a {
+  color: #a0b2c4;
+  transition: ease 0.3s;
+}
+
+a:hover {
+  color: #677481;
+}
+
+nav {
+  margin: 5px 0;
+}
+
+.content {
+  margin: 10px 10px 35px;
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 5px 5px 0;
+}
+
+#linkButton {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 10px 10px;
+}
+
+#linkButton button {
+  font-size: larger;
+}
+
+.input-group {
+  margin: 10px 0;
+}
+
+#toggleDarkMode {
+  padding: 5px;
+}
+
+div#taskList p {
+  animation-name: fadeInDown;
+  animation-duration: 0.5s;
+  margin: 12px 0;
+  font-size: 18px;
+}
+
+div#taskList p:hover {
+  cursor: pointer;
+  text-decoration: line-through;
+}
+
+#taskBox {
+  border: 1px solid rgb(94, 102, 109);
+}
