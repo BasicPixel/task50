@@ -1,5 +1,5 @@
 $("#moon").hide();
-var dark = true;
+let dark = true;
 
 // load dark mode preference from localStorage & update theme to match
 $(document).ready(function () {
@@ -11,7 +11,7 @@ $(document).ready(function () {
 
 // add task on enter key inside task input box
 $("#taskBox").keypress(function (event) {
-  var key = event.keyCode ? event.keyCode : event.which;
+  const key = event.keyCode ? event.keyCode : event.which;
   if (key == "13") {
     addTask();
   }
