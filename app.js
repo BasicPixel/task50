@@ -1,19 +1,31 @@
-$("#moon").hide();
-let dark = true;
+let darkMode = true;
+let tasks = [];
 
 // load dark mode preference from localStorage & update theme to match
 $(document).ready(function () {
-  let darkModeState = localStorage.getItem("darkModeState");
-  if (darkModeState == "false") {
+  $("#moon").hide();
+
+  const darkModeState = localStorage.getItem("darkModeState");
+  if (darkModeState === "false") {
     toggleDarkMode();
   }
+
+  if (localStorage.getItem("tasks")) {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  } else {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  updateTasks();
 });
 
-// add task on enter key inside task input box
-$("#taskBox").keypress(function (event) {
-  const key = event.keyCode ? event.keyCode : event.which;
-  if (key == "13") {
-    addTask();
+$("#taskForm").submit((e) => {
+  e.preventDefault();
+  if ($("#taskBox").val().length > 0) {
+    tasks.push($("#taskBox").val());
+    $("#taskBox").val("");
+
+    updateTasks();
   }
 });
 
@@ -23,26 +35,34 @@ function toggleDarkMode() {
   $("nav").toggleClass("navbar-dark bg-light navbar-light");
   $("#toggleDarkMode").toggleClass("btn-dark btn-light");
   $("#sun, #moon").toggle();
-  dark = !dark;
+  darkMode = !darkMode;
   // store dark mode preference in localStorage
-  localStorage.setItem("darkModeState", dark);
+  localStorage.setItem("darkModeState", darkMode);
 }
 
 // code for task addition
 
-function addTask() {
-  if ($("#taskBox").val().length > 0) {
-    const list = $("#taskList");
-    let text = $("#taskBox").val();
-    let element = document.createElement("p");
-    element.appendChild(document.createTextNode(text));
-    list.append(element);
-    $("#taskBox").val("");
+function updateTasks() {
+  // Store task list reference
+  const list = $("#taskList");
 
-    element.onclick = removeTask;
-  }
+  // Empty the original task list
+  list.html("");
+
+  tasks.forEach((task, index) => {
+    // For each task, create an element with the task text
+    // Each element should have a data-index attribute of the index in the list
+    list.append(
+      `<li data-index=${index} onclick="removeTask(${index})" class="my-2 user-select-none">${task}</li>`
+    );
+  });
+
+  // Update tasks in localStorage
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function removeTask(e) {
-  e.target.remove();
+function removeTask(index) {
+  // Remove the item with the specified index from the tasks array, then update tasks
+  tasks.splice(index, 1);
+  updateTasks();
 }

@@ -53,14 +53,12 @@ nav {
   padding: 5px;
 }
 
-div#taskList p {
-  animation-name: fadeInDown;
+#taskList > li {
+  animation-name: fadeIn;
   animation-duration: 0.5s;
-  margin: 12px 0;
-  font-size: 18px;
 }
 
-div#taskList p:hover {
+#taskList > li:hover {
   cursor: pointer;
   text-decoration: line-through;
 }
