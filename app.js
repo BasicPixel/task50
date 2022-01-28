@@ -34,6 +34,7 @@ function toggleDarkMode() {
   $("body, #taskBox").toggleClass("bg-dark text-light");
   $("nav").toggleClass("navbar-dark bg-light navbar-light");
   $("#toggleDarkMode").toggleClass("btn-dark btn-light");
+  $("#addTaskButton").toggleClass("text-white text-dark");
   $("#sun, #moon").toggle();
   darkMode = !darkMode;
   // store dark mode preference in localStorage
