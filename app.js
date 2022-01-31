@@ -11,7 +11,7 @@ $(document).ready(function () {
   }
 
   if (localStorage.getItem("tasks")) {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
+    tasks = JSON.parse(localStorage.getItem("tasks")).reverse();
   } else {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
@@ -50,7 +50,7 @@ function updateTasks() {
   // Empty the original task list
   list.html("");
 
-  tasks.forEach((task, index) => {
+  tasks.reverse().forEach((task, index) => {
     // For each task, create an element with the task text
     // Each element should have a data-index attribute of the index in the list
     list.append(
