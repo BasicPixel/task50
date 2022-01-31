@@ -22,7 +22,7 @@ $(document).ready(function () {
 $("#taskForm").submit((e) => {
   e.preventDefault();
   if ($("#taskBox").val().length > 0) {
-    tasks.push($("#taskBox").val());
+    tasks.unshift($("#taskBox").val());
     $("#taskBox").val("");
 
     updateTasks();
@@ -50,7 +50,7 @@ function updateTasks() {
   // Empty the original task list
   list.html("");
 
-  tasks.reverse().forEach((task, index) => {
+  tasks.forEach((task, index) => {
     // For each task, create an element with the task text
     // Each element should have a data-index attribute of the index in the list
     list.append(
