@@ -11,7 +11,7 @@ $(document).ready(function () {
   }
 
   if (localStorage.getItem("tasks")) {
-    tasks = JSON.parse(localStorage.getItem("tasks")).reverse();
+    tasks = JSON.parse(localStorage.getItem("tasks"));
   } else {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
