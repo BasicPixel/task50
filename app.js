@@ -1,19 +1,19 @@
-let darkMode = true;
-let tasks = [];
+// Set darkMode to localStorage preference, or fallback to true
+let darkMode = localStorage.getItem("darkModeState") || true;
 
-// load dark mode preference from localStorage & update theme to match
-$(document).ready(function () {
+// Load tasks from localStorage
+if (!localStorage.getItem("tasks")) {
+  localStorage.setItem("tasks", JSON.stringify([]))
+}
+
+let tasks = JSON.parse(localStorage.getItem("tasks"));;
+
+
+$(document).ready(() => {
   $("#moon").hide();
 
-  const darkModeState = localStorage.getItem("darkModeState");
-  if (darkModeState === "false") {
+  if (darkMode == "false") {
     toggleDarkMode();
-  }
-
-  if (localStorage.getItem("tasks")) {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-  } else {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   updateTasks();
@@ -21,6 +21,7 @@ $(document).ready(function () {
 
 $("#taskForm").submit((e) => {
   e.preventDefault();
+
   if ($("#taskBox").val().length > 0) {
     tasks.unshift($("#taskBox").val());
     $("#taskBox").val("");
@@ -29,25 +30,21 @@ $("#taskForm").submit((e) => {
   }
 });
 
-// toggle dark mode by toggling bootstrap classes
+// Toggle dark mode by toggling bootstrap classes
 function toggleDarkMode() {
   $("body, #taskBox").toggleClass("bg-dark text-light");
   $("nav").toggleClass("navbar-dark bg-light navbar-light");
   $("#toggleDarkMode").toggleClass("btn-dark btn-light");
   $("#addTaskButton").toggleClass("text-white text-dark");
   $("#sun, #moon").toggle();
-  darkMode = !darkMode;
-  // store dark mode preference in localStorage
+
+  darkMode = !darkMode
   localStorage.setItem("darkModeState", darkMode);
 }
 
-// code for task addition
-
 function updateTasks() {
-  // Store task list reference
   const list = $("#taskList");
 
-  // Empty the original task list
   list.html("");
 
   tasks.forEach((task, index) => {
