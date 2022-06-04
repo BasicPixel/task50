@@ -2,21 +2,12 @@
 <html lang="en">
   <head>
     <title>task50</title>
-    <!-- Meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="Simple and elegant online to-do list." />
-
-    <!-- Fonts
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap"
-      rel="stylesheet"
-    /> -->
 
     <!-- Bootstrap CSS -->
     <link
@@ -43,14 +34,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="manifest" href="/site.webmanifest" />
 
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body class="bg-dark text-light container col-md-8 col-lg-5">
-    <nav class="navbar navbar-dark px-3">
-      <span class="navbar-brand user-select-none">✅ task50</span>
+  <body class="bg-dark text-light container col-md-7 col-lg-5">
+    <nav class="navbar navbar-dark px-3 rounded-bottom">
+      <span class="navbar-brand">✅ task50</span>
       <ul class="navbar-nav flex flex-row gap-3">
         <li class="nav-item">
           <a
@@ -61,9 +51,9 @@
             >About</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex align-items-center">
           <button
-            class="nav-link btn btn-dark align-middle"
+            class="nav-link btn btn-dark d-flex align-items-center p-2"
             id="toggleDarkMode"
             onclick="toggleDarkMode()"
           >
@@ -99,12 +89,12 @@
     </nav>
     <main>
       <form id="taskForm">
-        <div class="input-group">
+        <div class="input-group my-3">
           <input
             type="text"
             placeholder="Add a task here..."
             id="taskBox"
-            class="form-control bg-dark text-light"
+            class="form-control bg-dark text-light border-secondary"
             autofocus
             autocomplete="off"
           />
