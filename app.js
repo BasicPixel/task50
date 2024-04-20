@@ -3,11 +3,10 @@ let darkMode = localStorage.getItem("darkModeState") || true;
 
 // Load tasks from localStorage
 if (!localStorage.getItem("tasks")) {
-  localStorage.setItem("tasks", JSON.stringify([]))
+  localStorage.setItem("tasks", JSON.stringify([]));
 }
 
-let tasks = JSON.parse(localStorage.getItem("tasks"));;
-
+let tasks = JSON.parse(localStorage.getItem("tasks"));
 
 $(document).ready(() => {
   $("#moon").hide();
@@ -38,7 +37,7 @@ function toggleDarkMode() {
   $("#addTaskButton").toggleClass("text-white text-dark");
   $("#sun, #moon").toggle();
 
-  darkMode = !darkMode
+  darkMode = !darkMode;
   localStorage.setItem("darkModeState", darkMode);
 }
 
@@ -51,7 +50,7 @@ function updateTasks() {
     // For each task, create an element with the task text
     // Each element should have a data-index attribute of the index in the list
     list.append(
-      `<li data-index=${index} onclick="removeTask(${index})" class="my-2 user-select-none">${task}</li>`
+      `<li dir="rtl" data-index=${index} onclick="removeTask(${index})" class="my-2 user-select-none">${task}</li>`
     );
   });
 
